@@ -1,0 +1,9 @@
+[submodule "LiteEngine.Common"]
+	path = LiteEngine.Common
+	url = https://github.com/LiteEngine/Common
+[submodule "SDL2"]
+	path = SDL2
+	url = https://github.com/LiteEngine/SDL2
+[submodule "Glew"]
+	path = Glew
+	url = https://github.com/LiteEngine/Glew
