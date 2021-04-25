@@ -17,13 +17,12 @@ set(
 )
 
 add_subdirectory(LiteEngine.Common)
-
-include(sdl2.cmake)
-include(glew.cmake)
+add_subdirectory(LiteEngine.Glew)
+add_subdirectory(LiteEngine.SDL2)
 
 add_library(lite_engine_application ${HEADERS} ${SOURCES})
 target_include_directories(lite_engine_application PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/include")
-target_link_libraries(lite_engine_application PUBLIC -lopengl32 -lglu32 -lglew32 ${SDL2_LIBRARIES} lite_engine_common)
+target_link_libraries(lite_engine_application PUBLIC lite_engine_common lite_engine_glew lite_engine_sdl2)
 
 add_executable(lite_engine_application_example example.cpp)
 target_link_libraries(lite_engine_application_example PUBLIC lite_engine_application)
