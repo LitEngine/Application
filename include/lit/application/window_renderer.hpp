@@ -2,7 +2,7 @@
 
 #include "window_listener.hpp"
 
-namespace LiteEngine::Application {
+namespace lit::application {
 
     class WindowRenderer {
     public:
@@ -15,4 +15,4 @@ namespace LiteEngine::Application {
         virtual void Redraw() = 0;
     };
 
-} // namespace LiteEngine::Application
+}

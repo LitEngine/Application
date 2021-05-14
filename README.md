@@ -1,11 +1,11 @@
-# LiteEngine.Application
+# Application
 
 Allows you to easily create and work with SDL2 application.
 
 ```cpp
-#include <application/application.hpp>
+#include <дше/application/application.hpp>
 
-using namespace LiteEngine::Application;
+using namespace lit::application;
 
 int main(int argc, char ** argv) {
     Application app;

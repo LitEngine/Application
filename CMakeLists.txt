@@ -4,10 +4,10 @@ set(CMAKE_CXX_STANDARD 20)
 
 set(
         HEADERS
-        include/application/application.hpp
-        include/application/window.hpp
-        include/application/window_listener.hpp
-        include/application/window_renderer.hpp
+        include/lit/application/application.hpp
+        include/lit/application/window.hpp
+        include/lit/application/window_listener.hpp
+        include/lit/application/window_renderer.hpp
 )
 
 set(
@@ -16,13 +16,26 @@ set(
         src/window.cpp
 )
 
-add_subdirectory(LiteEngine.Common)
-add_subdirectory(LiteEngine.Glew)
-add_subdirectory(LiteEngine.SDL2)
+include(FetchContent)
 
-add_library(lite_engine_application ${HEADERS} ${SOURCES})
-target_include_directories(lite_engine_application PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/include")
-target_link_libraries(lite_engine_application PUBLIC lite_engine_common lite_engine_glew lite_engine_sdl2)
+if (NOT TARGET glew)
+    FetchContent_Declare(glew GIT_REPOSITORY https://github.com/LiteEngine/glew GIT_TAG master)
+    FetchContent_MakeAvailable(glew)
+endif ()
 
-add_executable(lite_engine_application_example example.cpp)
-target_link_libraries(lite_engine_application_example PUBLIC lite_engine_application)
+if (NOT TARGET sdl2)
+    FetchContent_Declare(sdl2 GIT_REPOSITORY https://github.com/LiteEngine/SDL2 GIT_TAG master)
+    FetchContent_MakeAvailable(sdl2)
+endif ()
+
+if (NOT TARGET common)
+    FetchContent_Declare(common GIT_REPOSITORY https://github.com/LiteEngine/Common GIT_TAG master)
+    FetchContent_MakeAvailable(common)
+endif ()
+
+add_library(application ${HEADERS} ${SOURCES})
+target_include_directories(application PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/include")
+target_link_libraries(application PUBLIC common glew sdl2)
+
+add_executable(application_example example.cpp)
+target_link_libraries(application_example PUBLIC application)

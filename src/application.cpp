@@ -1,9 +1,9 @@
-#include <application/application.hpp>
-#include <common/logging.hpp>
+#include <lit/application/application.hpp>
+#include <lit/common/logging.hpp>
 #include <GL/glew.h>
 
-using namespace LiteEngine::Common;
-using namespace LiteEngine::Application;
+using namespace lit::common;
+using namespace lit::application;
 
 bool Application::Init() {
     if (initialized) {

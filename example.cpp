@@ -1,6 +1,6 @@
-#include <application/application.hpp>
+#include <lit/application/application.hpp>
 
-using namespace LiteEngine::Application;
+using namespace lit::application;
 
 int main(int argc, char ** argv) {
     Application app;

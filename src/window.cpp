@@ -1,11 +1,11 @@
 #include <utility>
-#include <application/window.hpp>
-#include <common/logging.hpp>
-#include <common/time_utils.hpp>
+#include <lit/application/window.hpp>
+#include <lit/common/logging.hpp>
+#include <lit/common/time_utils.hpp>
 #include <GL/glew.h>
 
-using namespace LiteEngine::Common;
-using namespace LiteEngine::Application;
+using namespace lit::common;
+using namespace lit::application;
 
 Window::~Window() {
     if (sdl_window != nullptr) {
