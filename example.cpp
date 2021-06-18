@@ -1,9 +1,11 @@
 #include <lit/application/application.hpp>
+#include <spdlog/spdlog.h>
 
 using namespace lit::application;
 
 int main(int, char **) {
-    Application app;
+    auto logger = spdlog::default_logger();
+    Application app(logger);
     app.Init();
 
     WindowInfo game_window;
