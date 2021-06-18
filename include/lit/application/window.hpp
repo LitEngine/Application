@@ -18,8 +18,8 @@ namespace lit::application {
 
     struct WindowInfo {
         std::string title = "Default";
-        int width = 800;
-        int height = 600;
+        uint32_t width = 800;
+        uint32_t height = 600;
         bool maximized = true;
         bool resizable = true;
     };
