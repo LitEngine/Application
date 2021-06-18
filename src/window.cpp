@@ -17,6 +17,12 @@ bool Window::Init() {
     if (initialized) {
         return true;
     }
+
+    // OpenGL 3.3 todo: make it as a parameter
+    SDL_GL_SetAttribute( SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE );
+    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
+    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 3);
+
     sdl_window = SDL_CreateWindow(m_info.title.c_str(),
                                   SDL_WINDOWPOS_CENTERED_MASK,
                                   SDL_WINDOWPOS_CENTERED_MASK,
