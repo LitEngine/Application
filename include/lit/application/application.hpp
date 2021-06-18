@@ -10,7 +10,7 @@ namespace lit::application {
 
     class Application {
     public:
-        Application() = default;
+        explicit Application(spdlog::logger_ptr logger = spdlog::default_logger());
 
         ~Application();
 
@@ -33,6 +33,7 @@ namespace lit::application {
 
         std::vector<Window> windows;
 
+        spdlog::logger_ptr m_logger;
     };
 
 }

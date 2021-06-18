@@ -3,9 +3,16 @@
 #include <string>
 #include <memory>
 #include <vector>
+
 #include <SDL2/SDL.h>
+#include <spdlog/spdlog.h>
+
 #include "window_listener.hpp"
 #include "window_renderer.hpp"
+
+namespace spdlog {
+    using logger_ptr = std::shared_ptr<spdlog::logger>;
+}
 
 namespace lit::application {
 
@@ -19,13 +26,11 @@ namespace lit::application {
 
     class Window {
     public:
-        Window() = default;
-
         Window(const Window &window) = delete;
 
         Window(Window &&window) noexcept;
 
-        Window(WindowInfo info);
+        Window(spdlog::logger_ptr logger, WindowInfo info);
 
         ~Window();
 
@@ -42,7 +47,7 @@ namespace lit::application {
         void AddListener(std::shared_ptr<WindowListener> listener);
 
     private:
-        WindowInfo info = WindowInfo();
+        WindowInfo m_info = WindowInfo();
 
         SDL_Window *sdl_window = nullptr;
         SDL_GLContext gl_context = nullptr;
@@ -52,6 +57,8 @@ namespace lit::application {
 
         std::vector<std::shared_ptr<WindowRenderer>> renderers;
         std::vector<std::shared_ptr<WindowListener>> listeners;
+
+        spdlog::logger_ptr m_logger;
     };
 
 }

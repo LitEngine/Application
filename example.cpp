@@ -2,7 +2,7 @@
 
 using namespace lit::application;
 
-int main(int argc, char ** argv) {
+int main(int, char **) {
     Application app;
     app.Init();
 
@@ -14,7 +14,7 @@ int main(int argc, char ** argv) {
 
     app.CreateWindow(game_window, {}, {});
 
-    while(app.AnyWindowAlive()) {
+    while (app.AnyWindowAlive()) {
         app.PollEvents();
         app.Redraw();
     }
