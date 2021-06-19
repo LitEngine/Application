@@ -18,10 +18,10 @@ bool Window::Init() {
         return true;
     }
 
-    // OpenGL 3.3 todo: make it as a parameter
+    // OpenGL 4.5 todo: make it as a parameter
     SDL_GL_SetAttribute( SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE );
-    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
-    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 3);
+    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 4);
+    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 5);
 
     sdl_window = SDL_CreateWindow(m_info.title.c_str(),
                                   SDL_WINDOWPOS_CENTERED_MASK,
@@ -122,6 +122,5 @@ void Window::AddListener(std::shared_ptr<WindowListener> listener) {
     if (!initialized || closed) {
         return;
     }
-    listener->m_sdl_window = sdl_window;
     listeners.push_back(std::move(listener));
 }

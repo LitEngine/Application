@@ -1,8 +1,9 @@
 #pragma once
+#ifndef LIT_ASSERTS
+#define LIT_ASSERTS true
 
 #include <sstream>
 #include <spdlog/spdlog.h>
-
 #define GET_LOGGER_(logger, ...) logger
 #define GET_LOGGER(...) GET_LOGGER_(__VA_ARGS__ __VA_OPT__(,) spdlog::default_logger())
 
@@ -27,3 +28,5 @@ if (expr_res < val_low_res) \
 { (GET_LOGGER(__VA_ARGS__))->warn("[constraint violated] {} < {} ({} < {}) {}:{}", #expr, #val_low, expr_res, val_low_res, __FILE__, __LINE__);}\
 if (expr_res > val_high_res) \
 { (GET_LOGGER(__VA_ARGS__))->warn("[constraint violated] {} > {} ({} > {}) {}:{}", #expr, #val_high, expr_res, val_high_res, __FILE__, __LINE__);}}
+
+#endif
