@@ -29,7 +29,7 @@ FetchContent_MakeAvailable(spdlog)
 
 add_library(application ${HEADERS} ${SOURCES})
 target_include_directories(application PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/include")
-target_link_libraries(application PUBLIC -lmingw32 -lopengl32 -mwindows SDL2main SDL2-static libglew_static spdlog)
+target_link_libraries(application PUBLIC -lmingw32 -lopengl32 SDL2main SDL2-static libglew_static spdlog)
 
 add_executable(application_example example.cpp)
 target_link_libraries(application_example PUBLIC application)
