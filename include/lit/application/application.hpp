@@ -1,7 +1,11 @@
 #pragma once
 
 #include <string>
+#ifdef _MSC_VER
+#include <SDL.h>
+#elif defined(__MINGW32__)
 #include <SDL2/SDL.h>
+#endif
 #include <memory>
 #include <vector>
 #include "window.hpp"

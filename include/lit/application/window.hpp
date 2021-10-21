@@ -4,7 +4,12 @@
 #include <memory>
 #include <vector>
 
+#ifdef _MSC_VER
+#include <SDL.h>
+#elif defined(__MINGW32__)
 #include <SDL2/SDL.h>
+#endif
+
 #include <spdlog/spdlog.h>
 
 #include "window_listener.hpp"

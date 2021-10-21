@@ -1,6 +1,10 @@
 #pragma once
 
+#ifdef _MSC_VER
+#include <SDL_events.h>
+#elif defined(__MINGW32__)
 #include <SDL2/SDL_events.h>
+#endif
 
 namespace lit::application {
 
